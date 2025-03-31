@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TargetCircle from "../TargetCircle/TargetCircle";
+import CharacterSelectContainer from "../CharacterSelectContainer/CharacterSelectContainer";
 
 function GamePhoto() {
   const [targetBox, setTargetBox] = useState<{ x: number; y: number } | null>(
@@ -23,7 +24,12 @@ function GamePhoto() {
         className="object-cover w-full h-full rounded-4xl"
         onClick={handleClick}
       />
-      {targetBox && <TargetCircle targetBox={targetBox} />}
+      {targetBox && (
+        <>
+          <TargetCircle targetBox={targetBox} />{" "}
+          <CharacterSelectContainer targetBox={targetBox} />
+        </>
+      )}
     </div>
   );
 }
