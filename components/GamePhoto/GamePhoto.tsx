@@ -3,7 +3,19 @@ import TargetCircle from "../TargetCircle/TargetCircle";
 import CharacterSelectContainer from "../CharacterSelectContainer/CharacterSelectContainer";
 import Marker from "../Marker/Marker";
 
-function GamePhoto() {
+interface GamePhotoProps {
+  kevinFound: boolean;
+  johnFound: boolean;
+  setKevinFound: (x: boolean) => void;
+  setJohnFound: (x: boolean) => void;
+}
+
+function GamePhoto({
+  kevinFound,
+  setKevinFound,
+  johnFound,
+  setJohnFound,
+}: GamePhotoProps) {
   const [targetBox, setTargetBox] = useState<{ x: number; y: number } | null>(
     null
   );
@@ -16,8 +28,6 @@ function GamePhoto() {
     y: number;
   } | null>(null);
   const [userSelecting, setUserSelecting] = useState(false);
-  const [kevinFound, setKevinFound] = useState(false);
-  const [johnFound, setJohnFound] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
     const imgRect = e.currentTarget.getBoundingClientRect();
