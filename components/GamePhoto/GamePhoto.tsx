@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import TargetCircle from "../TargetCircle/TargetCircle";
 import CharacterSelectContainer from "../CharacterSelectContainer/CharacterSelectContainer";
+import Marker from "../Marker/Marker";
 
 function GamePhoto() {
   const [targetBox, setTargetBox] = useState<{ x: number; y: number } | null>(
     null
   );
+  const [kevinTargetBox, setKevinTargetBox] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const [johnTargetBox, setJohnTargetBox] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const [userSelecting, setUserSelecting] = useState(false);
+  const [kevinFound, setKevinFound] = useState(false);
+  const [johnFound, setJohnFound] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
     const imgRect = e.currentTarget.getBoundingClientRect();
@@ -14,6 +26,7 @@ function GamePhoto() {
     const y = e.clientY - imgRect.top - targetBoxSize;
 
     setTargetBox({ x, y });
+    setUserSelecting(true);
   };
 
   return (
@@ -24,10 +37,20 @@ function GamePhoto() {
         className="object-cover w-full h-full rounded-4xl"
         onClick={handleClick}
       />
-      {targetBox && (
+      {kevinFound && <Marker targetBox={kevinTargetBox} />}
+      {johnFound && <Marker targetBox={johnTargetBox} />}
+      {userSelecting && (
         <>
-          <TargetCircle targetBox={targetBox} />{" "}
-          <CharacterSelectContainer targetBox={targetBox} />
+          <TargetCircle targetBox={targetBox} />
+          <CharacterSelectContainer
+            targetBox={targetBox}
+            setTargetBox={setTargetBox}
+            setKevinFound={setKevinFound}
+            setJohnFound={setJohnFound}
+            setUserSelecting={setUserSelecting}
+            setKevinTargetBox={setKevinTargetBox}
+            setJohnTargetBox={setJohnTargetBox}
+          />
         </>
       )}
     </div>
