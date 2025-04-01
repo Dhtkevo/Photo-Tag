@@ -19,6 +19,13 @@ function CharacterSelect({
   setUserSelecting,
   setKevinTargetBox,
   setJohnTargetBox,
+  kevinFound,
+  johnFound,
+  charactersFound,
+  setCharactersFound,
+  startTime,
+  setScore,
+  score,
 }: CharacterSelectProps) {
   const handleClick = async (e: React.MouseEvent<HTMLImageElement>) => {
     const selectedTargetCharacterName = e.currentTarget.innerText;
@@ -40,9 +47,32 @@ function CharacterSelect({
     if (responseJson.characterFound === true && name === "kevin") {
       setKevinFound(true);
       setKevinTargetBox(userClickCoordinates);
+
+      setCharactersFound((oldCharFound) => {
+        const newCount = oldCharFound + 1;
+
+        if (newCount === 2) {
+          const finalScore = (Date.now() - startTime) / 1000;
+          setScore(finalScore);
+          console.log(finalScore);
+        }
+
+        return newCount;
+      });
     } else if (responseJson.characterFound === true && name === "john") {
       setJohnFound(true);
       setJohnTargetBox(userClickCoordinates);
+      setCharactersFound((oldCharFound) => {
+        const newCount = oldCharFound + 1;
+
+        if (newCount === 2) {
+          const finalScore = (Date.now() - startTime) / 1000;
+          setScore(finalScore);
+          console.log(finalScore);
+        }
+
+        return newCount;
+      });
     }
     setUserSelecting(false);
   };

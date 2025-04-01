@@ -15,6 +15,11 @@ function GamePhoto({
   setKevinFound,
   johnFound,
   setJohnFound,
+  charactersFound,
+  setCharactersFound,
+  startTime,
+  setScore,
+  score,
 }: GamePhotoProps) {
   const [targetBox, setTargetBox] = useState<{ x: number; y: number } | null>(
     null
@@ -60,6 +65,13 @@ function GamePhoto({
             setUserSelecting={setUserSelecting}
             setKevinTargetBox={setKevinTargetBox}
             setJohnTargetBox={setJohnTargetBox}
+            kevinFound={kevinFound}
+            johnFound={johnFound}
+            charactersFound={charactersFound}
+            setCharactersFound={setCharactersFound}
+            startTime={startTime}
+            setScore={setScore}
+            score={score}
           />
         </>
       )}

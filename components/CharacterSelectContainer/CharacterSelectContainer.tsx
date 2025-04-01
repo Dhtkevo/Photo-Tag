@@ -19,6 +19,13 @@ function CharacterSelectContainer({
   setUserSelecting,
   setKevinTargetBox,
   setJohnTargetBox,
+  kevinFound,
+  johnFound,
+  charactersFound,
+  setCharactersFound,
+  startTime,
+  setScore,
+  score,
 }: CharacterSelectContainerProps) {
   return (
     <div
@@ -34,6 +41,13 @@ function CharacterSelectContainer({
         setUserSelecting={setUserSelecting}
         setKevinTargetBox={setKevinTargetBox}
         setJohnTargetBox={setJohnTargetBox}
+        kevinFound={kevinFound}
+        johnFound={johnFound}
+        charactersFound={charactersFound}
+        setCharactersFound={setCharactersFound}
+        startTime={startTime}
+        setScore={setScore}
+        score={score}
       />
       <CharacterSelect
         name="john"
@@ -44,6 +58,13 @@ function CharacterSelectContainer({
         setUserSelecting={setUserSelecting}
         setJohnTargetBox={setJohnTargetBox}
         setKevinTargetBox={setKevinTargetBox}
+        kevinFound={kevinFound}
+        johnFound={johnFound}
+        charactersFound={charactersFound}
+        setCharactersFound={setCharactersFound}
+        startTime={startTime}
+        setScore={setScore}
+        score={score}
       />
     </div>
   );
